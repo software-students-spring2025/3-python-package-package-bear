@@ -1,0 +1,2 @@
+import pytest
+from buildabearpackage import buildabear

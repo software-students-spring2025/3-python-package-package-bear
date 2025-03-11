@@ -1,8 +1,11 @@
 [project]
-name = "buildabear_YOUR_USERNAMES_HERE"
+name = "buildabear_jasmine7310_s-m-wang_TadelinD_alw9411"
 version = "0.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Jasmine Fan", email="jf4654@nyu.edu" },
+  { name="Sophia Wang", email="smw9999@nyu.edu" },
+  { name="Tadelin De Leon", email="td2349@nyu.edu" },
+  { name="Alex Wang", email="alw9411@nyu.edu" },
 ]
 description = "A small example package"
 readme = "README.md"
