@@ -2,12 +2,15 @@
 
 ## Team Members
 Jasmine Fan https://github.com/jasmine7310
+
 Sophia Wang https://github.com/s-m-wang
+
 Tadelin De Leon https://github.com/TadelinD
+
 Alex Wang https://github.com/alw9411
 
-## Product Vision
-- a plain-language **description** of your project
+## Package Description
+Your own command line bear!
 
 ## Instructions on How to Configure Our Package
 - instructions for how to configure and run all parts of your project for any developer on any platform - these instructions must work!
