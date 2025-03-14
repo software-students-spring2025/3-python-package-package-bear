@@ -2,6 +2,7 @@ import time
 happiness = 0
 hunger = 0
 cleanliness = 0
+food = 0
 budget = 100
 name = "Bear"
 initialized = False
@@ -10,7 +11,7 @@ lastChecked = 0
 # need variables for timer/ clock
 
 
-# - We might need to create a quit function 
+# - We might need to create a quit function
 #   that saves the data to a local DB to save progress
 # - Restart/ die funtion
 # ^^^^ OPTIONAL IMPLEMENTATION
@@ -29,20 +30,16 @@ lastChecked = 0
 # !!!!! MIGHT NEED TO CHANGE THIS LATER IN MAIN WHEN RUN/ PACKAGE AND NOT AS A FUNCTION!!!!!
 def play():
     global happiness, hunger, cleanliness, initialized, lastChecked
-    initialized = True
-    happiness = 100
-    hunger = 100
-    cleanliness = 100
-    lastChecked = time.time()
-    print("Hi! I'm Bear! Nice to meet you!")
-    print("Feed me to keep me happy! Work a job to earn money!")
-    print("Use check_status to check my current happiness, hunger, and cleanliness!")
-    while initialized:
-        time.sleep(100)
-        update_happiness()
-        update_cleanliness()
-        update_hunger()
+    if not initialized:
+        initialized = True
+        happiness = 100
+        hunger = 100
+        cleanliness = 100
         lastChecked = time.time()
+        print("Hi! I'm Bear! Nice to meet you!")
+        print("Feed me to keep me happy! Work a job to earn money!")
+        print("Use check_status to check my current happiness, hunger, and cleanliness!")
+
 
 
 
@@ -56,7 +53,7 @@ def check_status():
     pass
 
 # ******** Jasmine
-# This function uses the clock/ timer to update the 
+# This function uses the clock/ timer to update the
 # hunger, happiness, and cleanliness over time
 # THIS FUNCTION CAN ONLY RUN IF PLAY() IS CALLED
 # (INITIALIZED == TRUE)
@@ -82,13 +79,14 @@ def change_name():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_happiness():
-    global initialized, happiness
+    global initialized, happiness, lastChecked
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
-    while initialized and happiness > 0:
-        time.sleep(100)
-        happiness -= 1
+    if initialized:
+        time_elapsed = time.time() - lastChecked
+        happiness -= time_elapsed//100
+        lastChecked = time.time()
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the cleanliness
@@ -96,13 +94,15 @@ def update_happiness():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_cleanliness():
-    global cleanliness
+    global initialized, cleanliness, lastChecked
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
-    currentTime = time.time()
-    timePassed = int(lastChecked - currentTime)
-    cleanliness -= (timePassed/100)
+    if initialized:
+        time_elapsed = time.time() - lastChecked
+        cleanliness -= time_elapsed // 100
+        lastChecked = time.time()
+
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the hunger
@@ -110,13 +110,16 @@ def update_cleanliness():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_hunger():
-    global hunger
+
+    global initialized, hunger, lastChecked
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
-    currentTime = time.time()
-    timePassed = int(lastChecked - currentTime)
-    hunger -= (timePassed/100)
+    if initialized:
+        time_elapsed = time.time() - lastChecked
+        hunger -= time_elapsed // 100
+        lastChecked = time.time()
+
 
 # ******** Sophia
 # This function takes a certain int of hours to work
@@ -126,6 +129,8 @@ def update_hunger():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def work(hours: int):
+
+    global budget
     if initialized:
         budget = budget + (hours*16)
     else:
@@ -138,6 +143,8 @@ def work(hours: int):
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def buy_food(amount: int):
+    global food, budget
+
     if initialized:
         #for now, food costs $1
         cost = 1
