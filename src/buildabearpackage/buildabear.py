@@ -1,3 +1,4 @@
+import time
 happiness = 0
 hunger = 0
 cleanliness = 0
@@ -6,6 +7,7 @@ name = "Bear"
 initialized = False
 
 # need variables for timer/ clock
+
 
 # - We might need to create a quit function 
 #   that saves the data to a local DB to save progress
@@ -25,7 +27,21 @@ initialized = False
 # !!!! SET INITIALIZED TO TRUE AFTER!!!
 # !!!!! MIGHT NEED TO CHANGE THIS LATER IN MAIN WHEN RUN/ PACKAGE AND NOT AS A FUNCTION!!!!!
 def play():
-    pass
+    global happiness, hunger, cleanliness, initialized
+    initialized = True
+    happiness = 100
+    hunger = 100
+    cleanliness = 100
+    print("Hi! I'm Bear! Nice to meet you!")
+    print("Feed me to keep me happy! Work a job to earn money!")
+    print("Use check_status to check my current happiness, hunger, and cleanliness!")
+    while initialized:
+        time.sleep(100)
+        update_happiness()
+        update_cleanliness()
+        update_hunger()
+
+
 
 # ******** Jasmine
 # This function prints out the current status of the pet
@@ -59,7 +75,13 @@ def change_name():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_happiness():
-    pass 
+    global initialized, happiness
+    if not initialized:
+        print("Make sure to use play() to set up the bear!")
+        return
+    while initialized and happiness > 0:
+        time.sleep(100)
+        happiness -= 1
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the cleanliness
@@ -88,7 +110,7 @@ def work(hours: int):
     pass
 
 # ******** Sophia
-# This function allows teh user to buy food for a set int amount
+# This function allows the user to buy food for a set int amount
 # THIS FUNCTION CAN ONLY RUN IF PLAY() IS CALLED
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
