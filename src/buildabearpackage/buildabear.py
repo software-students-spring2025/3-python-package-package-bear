@@ -5,7 +5,7 @@ cleanliness = 0
 budget = 100
 name = "Bear"
 initialized = False
-lastChecked = 0
+food = 0
 
 # need variables for timer/ clock
 
@@ -28,12 +28,11 @@ lastChecked = 0
 # !!!! SET INITIALIZED TO TRUE AFTER!!!
 # !!!!! MIGHT NEED TO CHANGE THIS LATER IN MAIN WHEN RUN/ PACKAGE AND NOT AS A FUNCTION!!!!!
 def play():
-    global happiness, hunger, cleanliness, initialized, lastChecked
+    global happiness, hunger, cleanliness, initialized
     initialized = True
     happiness = 100
     hunger = 100
     cleanliness = 100
-    lastChecked = time.time()
     print("Hi! I'm Bear! Nice to meet you!")
     print("Feed me to keep me happy! Work a job to earn money!")
     print("Use check_status to check my current happiness, hunger, and cleanliness!")
@@ -42,7 +41,6 @@ def play():
         update_happiness()
         update_cleanliness()
         update_hunger()
-        lastChecked = time.time()
 
 
 
@@ -70,7 +68,13 @@ def update_status():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def change_name():
-    pass
+   if initialized:
+        name = input("Enter a new name for your pet!")
+   else:
+        print("Make sure to use play() to set up the bear!")
+        return
+
+    
 
 # ******** Alex
 # This function uses the timer/ clock to periodically update the happiness
@@ -92,13 +96,7 @@ def update_happiness():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_cleanliness():
-    global cleanliness
-    if not initialized:
-        print("Make sure to use play() to set up the bear!")
-        return
-    currentTime = time.time()
-    timePassed = int(lastChecked - currentTime)
-    cleanliness -= (timePassed/100)
+    pass
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the hunger
@@ -106,13 +104,7 @@ def update_cleanliness():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_hunger():
-    global hunger
-    if not initialized:
-        print("Make sure to use play() to set up the bear!")
-        return
-    currentTime = time.time()
-    timePassed = int(lastChecked - currentTime)
-    hunger -= (timePassed/100)
+    pass
 
 # ******** Sophia
 # This function takes a certain int of hours to work
@@ -122,7 +114,12 @@ def update_hunger():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def work(hours: int):
-    pass
+    if initialized:
+        budget = budget + (hours*16)
+    else:
+        print("Make sure to use play() to set up the bear!")
+        return
+    
 
 # ******** Sophia
 # This function allows the user to buy food for a set int amount
@@ -130,5 +127,12 @@ def work(hours: int):
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def buy_food(amount: int):
-    pass
+    if initialized:
+        #for now, food costs $1
+        cost = 1
+        food = food+amount
+        budget = budget - (amount*cost)
+    else:
+        print("Make sure to use play() to set up the bear!")
+        return
 
