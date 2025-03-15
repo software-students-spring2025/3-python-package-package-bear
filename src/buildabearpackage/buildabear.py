@@ -36,6 +36,7 @@ def play():
         hunger = 100
         cleanliness = 100
         lastChecked = time.time()
+        print("ʕっ•ᴥ•ʔっ")
         print("Hi! I'm Bear! Nice to meet you!")
         print("Feed me to keep me happy! Work a job to earn money!")
         print("Use check_status to check my current happiness, hunger, and cleanliness!")
@@ -50,7 +51,54 @@ def play():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def check_status():
-    pass
+    if initialized:
+        update_status()
+        # Status with least amount of points is prioritized
+        if (hunger < 20) or (happiness < 20) or (cleanliness < 20):
+            print("ʕx . xʔ")
+            print(name + " is not doing so well.....")
+        elif (hunger < 40) or (happiness < 40) or (cleanliness < 40):
+            print("ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ")
+            print(name + " is super sad you aren't taking care of it!!")
+        elif (hunger < 60) or (happiness < 60) or (cleanliness < 60):
+            print("ʕ´• ᴥ•̥`ʔ")
+            print(name + " feels a little unhappy")
+        elif (hunger < 80) or (happiness < 80) or (cleanliness < 80):
+            print("＼ʕ •ᴥ•ʔ／")
+            print(name + " is doing good!")
+        elif (hunger < 100) or (happiness < 100) or (cleanliness < 100):
+            print("✿ ✿ ✿ ┏ʕ •ᴥ•ʔ┛ ✿ ✿ ✿")
+            print(name + " feels great! Good job!")
+        elif (hunger < 120) or (happiness < 120) or (cleanliness < 120):
+            print("*:・ﾟʕ◉ᴥ◉ʔ*:・ﾟ")
+            print(name + " feels estatic! Are you sure you aren't spoiling " + name + "too much?")
+        elif (hunger < 140) or (happiness < 140) or (cleanliness < 140):
+            print("ʕʘ̅͜ʘ̅ʔ 🌎")
+            print(name + " feels like it could take over the world! Hahaha!!! Should we be worried..?")
+        elif (hunger < 160) or (happiness < 160) or (cleanliness < 160):
+            print("ʕ•̫͡•ʕ*̫͡*ʕ•͓͡•ʔ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔฅʕ •ع• ʔฅʕ•̫͡•ʕ*̫͡*ʕ•͓͡•ʔ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔ")
+            print("You're spoiling " + name + " too much. Look at what you've done. ")
+            print(name +" can now use shadow clone jitsu and its your fault.")
+        elif (hunger < 200) or (happiness < 200) or (cleanliness < 200):
+            print(" __         __ ")
+            print("/  \.-----./  \\")
+            print("\    -   -    /")
+            print(" |   o   o   | ")
+            print(" \  .-...-.  / ")
+            print("   -\__Y__/-   ")
+            print("      ---      ")
+            print("You've created the ultimate lifeform. Congratulations 🎉🎉🎉")
+
+        print("-----------------------------------------------")
+        print("")
+
+        print("🍉 Hunger: " + (hunger/100) + "%")
+        print("🥹 Happiness:: " + (happiness/100) + "%")
+        print("🚿 Cleanliness: " + (cleanliness/100) + "%")
+        print("💵 Balance: $" + (budget))  
+    else:
+        print("Make sure to use play() to set up the bear!")
+        return
 
 # ******** Jasmine
 # This function uses the clock/ timer to update the
@@ -59,7 +107,16 @@ def check_status():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_status():
-    pass
+    global happiness, hunger, cleanliness, initialized, lastChecked
+
+    if initialized:
+        update_cleanliness()
+        update_happiness()
+        update_hunger()
+    else:
+        print("Make sure to use play() to set up the bear!")
+        return
+
 
 # ******** Sophia
 # This function allows the user to change the name of the pet
@@ -86,6 +143,7 @@ def update_happiness():
     if initialized:
         time_elapsed = time.time() - lastChecked
         happiness -= time_elapsed//100
+        happiness = max(happiness, 0)
         lastChecked = time.time()
 
 # ******** Tadelin
@@ -101,6 +159,7 @@ def update_cleanliness():
     if initialized:
         time_elapsed = time.time() - lastChecked
         cleanliness -= time_elapsed // 100
+        cleanliness = max(cleanliness, 0)
         lastChecked = time.time()
 
 
@@ -118,6 +177,7 @@ def update_hunger():
     if initialized:
         time_elapsed = time.time() - lastChecked
         hunger -= time_elapsed // 100
+        hunger = max(hunger, 0)
         lastChecked = time.time()
 
 
