@@ -1,5 +1,10 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "buildabear_jasmine7310_s-m-wang_TadelinD_alw9411"
+description = "A command line pet that you can feed, clean, and play with!"
 version = "0.0.1"
 authors = [
   { name="Jasmine Fan", email="jf4654@nyu.edu" },
@@ -7,16 +12,24 @@ authors = [
   { name="Tadelin De Leon", email="td2349@nyu.edu" },
   { name="Alex Wang", email="alw9411@nyu.edu" },
 ]
-description = "A small example package"
 readme = "README.md"
+keywords = ["package", "bear"]
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
+[project.optional-dependencies]
+dev = ["pytest"]
+
 [project.urls]
-Homepage = "https://github.com/pypa/sampleproject"
-Issues = "https://github.com/pypa/sampleproject/issues"
+Homepage = "https://github.com/software-students-spring2025/3-python-package-package-bear"
+Repository = "https://github.com/software-students-spring2025/3-python-package-package-bear"
+Issues = "https://github.com/software-students-spring2025/3-python-package-package-bear/issues"
+
+[project.scripts]
+buildabearpackage = "buildabearpackage.__main__:main"
