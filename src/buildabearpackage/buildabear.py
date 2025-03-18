@@ -1,7 +1,9 @@
 import time
+import random
 happiness = 0
 hunger = 0
 cleanliness = 0
+food = 0
 budget = 100
 name = "Bear"
 initialized = False
@@ -10,7 +12,7 @@ lastChecked = 0
 # need variables for timer/ clock
 
 
-# - We might need to create a quit function 
+# - We might need to create a quit function
 #   that saves the data to a local DB to save progress
 # - Restart/ die funtion
 # ^^^^ OPTIONAL IMPLEMENTATION
@@ -29,20 +31,17 @@ lastChecked = 0
 # !!!!! MIGHT NEED TO CHANGE THIS LATER IN MAIN WHEN RUN/ PACKAGE AND NOT AS A FUNCTION!!!!!
 def play():
     global happiness, hunger, cleanliness, initialized, lastChecked
-    initialized = True
-    happiness = 100
-    hunger = 100
-    cleanliness = 100
-    lastChecked = time.time()
-    print("Hi! I'm Bear! Nice to meet you!")
-    print("Feed me to keep me happy! Work a job to earn money!")
-    print("Use check_status to check my current happiness, hunger, and cleanliness!")
-    while initialized:
-        time.sleep(100)
-        update_happiness()
-        update_cleanliness()
-        update_hunger()
+    if not initialized:
+        initialized = True
+        happiness = 100
+        hunger = 100
+        cleanliness = 100
         lastChecked = time.time()
+        print("ʕっ•ᴥ•ʔっ")
+        print("Hi! I'm Bear! Nice to meet you!")
+        print("Feed me to keep me happy! Work a job to earn money!")
+        print("Use check_status to check my current happiness, hunger, and cleanliness!")
+
 
 
 
@@ -53,16 +52,73 @@ def play():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def check_status():
-    pass
+    if initialized:
+        update_status()
+        # Status with least amount of points is prioritized
+        if (hunger < 20) or (happiness < 20) or (cleanliness < 20):
+            print("ʕx . xʔ")
+            print(name + " is not doing so well.....")
+        elif (hunger < 40) or (happiness < 40) or (cleanliness < 40):
+            print("ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ")
+            print(name + " is super sad you aren't taking care of it!!")
+        elif (hunger < 60) or (happiness < 60) or (cleanliness < 60):
+            print("ʕ´• ᴥ•̥`ʔ")
+            print(name + " feels a little unhappy")
+        elif (hunger < 80) or (happiness < 80) or (cleanliness < 80):
+            print("＼ʕ •ᴥ•ʔ／")
+            print(name + " is doing good!")
+        elif (hunger < 100) or (happiness < 100) or (cleanliness < 100):
+            print("✿ ✿ ✿ ┏ʕ •ᴥ•ʔ┛ ✿ ✿ ✿")
+            print(name + " feels great! Good job!")
+        elif (hunger < 120) or (happiness < 120) or (cleanliness < 120):
+            print("*:・ﾟʕ◉ᴥ◉ʔ*:・ﾟ")
+            print(name + " feels estatic! Are you sure you aren't spoiling " + name + "too much?")
+        elif (hunger < 140) or (happiness < 140) or (cleanliness < 140):
+            print("ʕʘ̅͜ʘ̅ʔ 🌎")
+            print(name + " feels like it could take over the world! Hahaha!!! Should we be worried..?")
+        elif (hunger < 160) or (happiness < 160) or (cleanliness < 160):
+            print("ʕ•̫͡•ʕ*̫͡*ʕ•͓͡•ʔ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔฅʕ •ع• ʔฅʕ•̫͡•ʕ*̫͡*ʕ•͓͡•ʔ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔ")
+            print("You're spoiling " + name + " too much. Look at what you've done. ")
+            print(name +" can now use shadow clone jitsu and its your fault.")
+        elif (hunger < 200) or (happiness < 200) or (cleanliness < 200):
+            print(" __         __ ")
+            print("/  \.-----./  \\")
+            print("\    -   -    /")
+            print(" |   o   o   | ")
+            print(" \  .-...-.  / ")
+            print("   -\__Y__/-   ")
+            print("      ---      ")
+            print("You've created the ultimate lifeform. Congratulations 🎉🎉🎉")
+
+        print("-----------------------------------------------")
+        print("")
+
+        print("🍉 Hunger: " + (hunger/100) + "%")
+        print("🥹 Happiness:: " + (happiness/100) + "%")
+        print("🚿 Cleanliness: " + (cleanliness/100) + "%")
+        print("💵 Balance: $" + (budget))  
+    else:
+        print("Make sure to use play() to set up the bear!")
+        return
 
 # ******** Jasmine
-# This function uses the clock/ timer to update the 
+# This function uses the clock/ timer to update the
 # hunger, happiness, and cleanliness over time
 # THIS FUNCTION CAN ONLY RUN IF PLAY() IS CALLED
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_status():
-    pass
+    global happiness, hunger, cleanliness, initialized, lastChecked
+
+    if initialized:
+        update_cleanliness()
+        update_happiness()
+        update_hunger()
+        lastChecked = time.time()
+    else:
+        print("Make sure to use play() to set up the bear!")
+        return
+
 
 # ******** Sophia
 # This function allows the user to change the name of the pet
@@ -70,6 +126,7 @@ def update_status():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def change_name():
+    global name
     if initialized:
         name = input("Enter a new name for your pet!")
     else:
@@ -82,13 +139,14 @@ def change_name():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_happiness():
-    global initialized, happiness
+    global initialized, happiness, lastChecked
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
-    while initialized and happiness > 0:
-        time.sleep(100)
-        happiness -= 1
+    if initialized:
+        time_elapsed = time.time() - lastChecked
+        happiness -= time_elapsed//100
+        happiness = max(happiness, 0)
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the cleanliness
@@ -96,13 +154,14 @@ def update_happiness():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_cleanliness():
-    global cleanliness
+    global initialized, cleanliness, lastChecked
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
-    currentTime = time.time()
-    timePassed = int(lastChecked - currentTime)
-    cleanliness -= (timePassed/100)
+    if initialized:
+        time_elapsed = time.time() - lastChecked
+        cleanliness -= time_elapsed // 100
+        cleanliness = max(cleanliness, 0)
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the hunger
@@ -110,13 +169,16 @@ def update_cleanliness():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def update_hunger():
-    global hunger
+
+    global initialized, hunger, lastChecked
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
-    currentTime = time.time()
-    timePassed = int(lastChecked - currentTime)
-    hunger -= (timePassed/100)
+    if initialized:
+        time_elapsed = time.time() - lastChecked
+        hunger -= time_elapsed // 100
+        hunger = max(hunger, 0)
+
 
 # ******** Sophia
 # This function takes a certain int of hours to work
@@ -126,6 +188,8 @@ def update_hunger():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def work(hours: int):
+
+    global budget
     if initialized:
         budget = budget + (hours*16)
     else:
@@ -138,6 +202,8 @@ def work(hours: int):
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def buy_food(amount: int):
+    global food, budget
+
     if initialized:
         #for now, food costs $1
         cost = 1
@@ -146,4 +212,72 @@ def buy_food(amount: int):
     else:
         print("Make sure to use play() to set up the bear!")
         return
+
+
+def feed_bear():
+    global name, hunger
+    if not initialized:
+        print("Make sure to use play() to set up the bear!")
+        return
+    update_status()
+    if initialized:
+        print("You gave " + name + " a jar of honey!")
+        print()
+        print("ʕっ•ᴥ•ʔっ🍯")
+        print("Their hunger has gone up by 10 points!")
+        hunger += 10
+
+def clean_bear():
+    global name, cleanliness
+    if not initialized:
+        print("Make sure to use play() to set up the bear!")
+        return
+    update_status()
+    if initialized:
+        print("You gave " + name + " a bath!")
+        print()
+        print("🧼💦🫧 ₍ᐢ•ﻌ•ᐢ₎*:・ﾟ🧼💦🫧")
+        print("They are feeling so clean!")
+        print("Their cleanliness has gone up by 30 points!")
+        cleanliness += 30
+
+def play_with_bear():
+    global name, cleanliness
+    if not initialized:
+        print("Make sure to use play() to set up the bear!")
+        return
+    update_status()
+    if initialized:
+        event = random.randint(0,3)
+        if event == 0:
+            print("You watched a movie with " + name + "!")
+            print()
+            print("ʕ •ᴥ•ʔ🍿     ˙✧˖°📺 ⋆｡˚")
+            print("They loved the movie!")
+            print("Their happiness has gone up by 20 points!")
+            happiness += 20
+        elif event == 1:
+            print("You had a dance party with " + name + "!")
+            print()
+            print("ヾʕ ˃ᴥ˂ ʔ◞ • *✰")
+            print("They had a groovy time with you!")
+            print("Their happiness has gone up by 20 points!")
+            happiness += 20
+        elif event == 2:
+            print("You played fetch with " + name + "!")
+            print()
+            print("                          ᳂          ")
+            print("       ┏ʕ •ᴥ•ʔ┛                      ")
+            print("They had such a fun time!")
+            print("Their happiness has gone up by 20 points!")
+            happiness += 20
+        elif event == 3:
+            print("You picked flowers with " + name + "!")
+            print()
+            print("🌼  💐ʕ•ᴥ• ʔ  🌼")
+            print("They made you a bouquet!")
+            print("Their happiness has gone up by 20 points!")
+            happiness += 20
+
+
 
