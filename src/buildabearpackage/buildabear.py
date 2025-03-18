@@ -82,11 +82,11 @@ def check_status():
             print(name +" can now use shadow clone jitsu and its your fault.")
         elif (hunger < 200) or (happiness < 200) or (cleanliness < 200):
             print(" __         __ ")
-            print("/  \\.-----./  \\")
-            print("\\    -   -    /")
+            print("/  \.-----./  \\")
+            print("\    -   -    /")
             print(" |   o   o   | ")
-            print(" \\  .-...-.  / ")
-            print("   -\\__Y__/-   ")
+            print(" \  .-...-.  / ")
+            print("   -\__Y__/-   ")
             print("      ---      ")
             print("You've created the ultimate lifeform. Congratulations 🎉🎉🎉")
 
@@ -126,7 +126,7 @@ def update_status():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def change_name():
-    global name
+    global name, initialized
     if initialized:
         name = input("Enter a new name for your pet!")
     else:
@@ -188,10 +188,10 @@ def update_hunger():
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def work(hours: int):
-
-    global budget
+    global budget, initialized, name
     if initialized:
         budget = budget + (hours*16)
+        print(name+" worked for "+hours+" hours. You earned "+hours*16+" coin.")
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -202,13 +202,16 @@ def work(hours: int):
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
 def buy_food(amount: int):
-    global food, budget
-
+    global food, budget, initialized
     if initialized:
         #for now, food costs $1
         cost = 1
-        food = food+amount
-        budget = budget - (amount*cost)
+        if (amount*cost > budget):
+            print("You don't have enough money!")
+        else:
+            food = food+amount
+            budget = budget - (amount*cost)
+        print("You bought "+amount+" for "+amount*cost+" coin")
     else:
         print("Make sure to use play() to set up the bear!")
         return
