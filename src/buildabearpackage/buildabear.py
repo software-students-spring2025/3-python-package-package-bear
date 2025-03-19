@@ -126,10 +126,13 @@ def update_status():
 # THIS FUNCTION CAN ONLY RUN IF PLAY() IS CALLED
 # (INITIALIZED == TRUE)
 # IF NOT INIT, PRINT DIRECTION TO CALL PLAY()
-def change_name():
+def change_name(temp):
     global name, initialized
     if initialized:
-        name = input("Enter a new name for your pet!")
+        if temp == "":
+            print("You must enter a name.")
+        else:
+            name = temp
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -212,7 +215,7 @@ def buy_food(amount: int):
         else:
             food = food+amount
             budget = budget - (amount*cost)
-        print("You bought "+amount+" for "+amount*cost+" coin")
+            print("You bought "+amount+" for "+amount*cost+" coin")
     else:
         print("Make sure to use play() to set up the bear!")
         return
