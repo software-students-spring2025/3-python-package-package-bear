@@ -1,5 +1,7 @@
 import pytest
 from buildabearpackage import buildabear
+import unittest
+from unittest.mock import patch
 import time
 
 class Test:
@@ -227,3 +229,57 @@ class Test:
         time.sleep(300)
         buildabear.play_with_bear()
         assert buildabear.happiness == 37, f"Expected happiness variable to be 37. Instead it returned {buildabear.happiness}."
+    
+    # Test check_status()
+    @patch('builtins.print')
+    def test_check_status_happiness(self, mock_print):
+        # test the scenario where the happiness is the lowest 
+        buildabear.initialized = True
+        buildabear.happiness = 19
+        buildabear.hunger = 100
+        buildabear.cleanliness = 100
+        buildabear.check_status()
+        mock_print.assert_any_call("ʕx . xʔ")
+        mock_print.assert_any_call(buildabear.name + " is not doing so well.....")
+    
+    def test_check_status_hunger(self, mock_print):
+        # test the scenario where the hunger is the lowest 
+        buildabear.initialized = True
+        buildabear.happiness = 100
+        buildabear.hunger = 39
+        buildabear.cleanliness = 100
+        buildabear.check_status()
+        mock_print.assert_any_call("ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ")
+        mock_print.assert_any_call(buildabear.name + " is super sad you aren't taking care of it!!")
+    
+    def test_check_status_cleanliness(self, mock_print):
+        # test the scenario where the cleanliness is the lowest 
+        buildabear.initialized = True
+        buildabear.happiness = 100
+        buildabear.hunger = 100
+        buildabear.cleanliness = 59
+        buildabear.check_status()
+        mock_print.assert_any_call("ʕ´• ᴥ•̥`ʔ")
+        mock_print.assert_any_call(buildabear.name + " feels a little unhappy")
+
+    # Test update_status()
+    def test_update_status_happiness(self, mock_print):
+        # test if update happiness correctly
+        buildabear.initialized = False
+        buildabear.happiness = 72
+        buildabear.update_status()
+        mock_print.assert_any_call("Make sure to use play() to set up the bear!")
+    
+    def test_update_status_hunger(self, mock_print):
+        # test if update hunger correctly
+        buildabear.initialized = False
+        buildabear.hunger = 72
+        buildabear.update_status()
+        mock_print.assert_any_call("Make sure to use play() to set up the bear!")
+
+    def test_update_status_cleanliness(self, mock_print):
+        # test if update cleanliness correctly
+        buildabear.initialized = False
+        buildabear.happiness = 72
+        buildabear.update_status()
+        mock_print.assert_any_call("Make sure to use play() to set up the bear!")
