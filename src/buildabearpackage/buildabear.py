@@ -152,7 +152,7 @@ def update_happiness():
         return
     if initialized:
         time_elapsed = time.time() - lastChecked
-        happiness -= time_elapsed//100
+        happiness -= time_elapsed
         happiness = max(happiness, 0)
 
 # ******** Tadelin
@@ -167,7 +167,7 @@ def update_cleanliness():
         return
     if initialized:
         time_elapsed = time.time() - lastChecked
-        cleanliness -= time_elapsed // 100
+        cleanliness -= time_elapsed
         cleanliness = max(cleanliness, 0)
 
 # ******** Tadelin
@@ -183,7 +183,7 @@ def update_hunger():
         return
     if initialized:
         time_elapsed = time.time() - lastChecked
-        hunger -= time_elapsed // 100
+        hunger -= time_elapsed
         hunger = max(hunger, 0)
 
 

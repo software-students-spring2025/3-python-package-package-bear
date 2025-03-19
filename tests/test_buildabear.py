@@ -32,14 +32,14 @@ class Test:
     def check_happiness_updated(self):
         buildabear.happiness = 100
         buildabear.lastChecked = time.time()
-        time.sleep(100)
+        time.sleep(1)
         buildabear.update_happiness()
         assert buildabear.happiness == 99, f"Expected buildabear happiness to be 99. It was {buildabear.happiness}"
         
     def check_happiness_nonnegative(self):
         buildabear.happiness = 0
         buildabear.lastChecked = time.time()
-        time.sleep(100)
+        time.sleep(1)
         buildabear.update_happiness()
         assert buildabear.happiness == 0, f"Expected buildabear happiness to be 0. It was {buildabear.happiness}"
 
@@ -54,14 +54,14 @@ class Test:
     def check_cleanliness_updated(self):
         buildabear.cleanliness = 100
         buildabear.lastChecked = time.time()
-        time.sleep(100)
+        time.sleep(1)
         buildabear.update_cleanliness()
         assert buildabear.cleanliness == 99, f"Expected buildabear cleanliness to be 99. It was {buildabear.cleanliness}"
 
     def check_cleanliness_nonnegative(self):
         buildabear.cleanliness = 0
         buildabear.lastChecked = time.time()
-        time.sleep(100)
+        time.sleep(1)
         buildabear.update_cleanliness()
         assert buildabear.cleanliness == 0, f"Expected buildabear cleanliness to be 0. It was {buildabear.cleanliness}"
 
@@ -76,14 +76,14 @@ class Test:
     def check_hunger_updated(self):
         buildabear.hunger = 100
         buildabear.lastChecked = time.time()
-        time.sleep(100)
+        time.sleep(1)
         buildabear.update_hunger()
         assert buildabear.hunger == 99, f"Expected buildabear hunger to be 99. It was {buildabear.hunger}"
 
     def check_hunger_nonnegative(self):
         buildabear.hunger = 0
         buildabear.lastChecked = time.time()
-        time.sleep(100)
+        time.sleep(1)
         buildabear.update_hunger()
         assert buildabear.hunger == 0, f"Expected buildabear hunger to be 0. It was {buildabear.hunger}"
 
@@ -205,7 +205,7 @@ class Test:
     def test_clean_bear_time_passed(self):
         buildabear.cleanliness = 20
         buildabear.lastChecked = time.time()
-        time.sleep(300)
+        time.sleep(3)
         buildabear.clean_bear()
         assert buildabear.cleanliness == 47, f"Expected cleanliness variable to be 47. Instead it returned {buildabear.cleanliness}."
 
@@ -226,7 +226,7 @@ class Test:
     def test_play_bear_time_passed(self):
         buildabear.happiness = 20
         buildabear.lastChecked = time.time()
-        time.sleep(300)
+        time.sleep(3)
         buildabear.play_with_bear()
         assert buildabear.happiness == 37, f"Expected happiness variable to be 37. Instead it returned {buildabear.happiness}."
     
