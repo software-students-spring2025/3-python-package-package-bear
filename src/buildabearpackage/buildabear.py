@@ -86,11 +86,11 @@ def check_status():
             print(name +" can now use shadow clone jitsu and its your fault.")
         elif (hunger < 200) or (happiness < 200) or (cleanliness < 200):
             print(" __         __ ")
-            print("/  \\.-----./  \\")
-            print("\\    -   -    /")
+            print("/  \.-----./  \\")
+            print("\    -   -    /")
             print(" |   o   o   | ")
-            print(" \\  .-...-.  / ")
-            print("   -\\__Y__/-   ")
+            print(" \  .-...-.  / ")
+            print("   -\__Y__/-   ")
             print("      ---      ")
             print("You've created the ultimate lifeform. Congratulations 🎉🎉🎉")
 
@@ -198,7 +198,7 @@ def work(hours: int):
     global budget, initialized, name
     if initialized:
         budget = budget + (hours*16)
-        print(name+" worked for "+hours+" hours. You earned "+hours*16+" coin.")
+        print(name+" worked for "+str(hours)+" hours. You earned "+str(hours*16)+" coin.")
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -218,7 +218,7 @@ def buy_food(amount: int):
         else:
             food = food+amount
             budget = budget - (amount*cost)
-            print("You bought "+amount+" for "+amount*cost+" coin")
+            print("You bought "+str(amount)+" for "+str(amount*cost)+" coin")
     else:
         print("Make sure to use play() to set up the bear!")
         return
