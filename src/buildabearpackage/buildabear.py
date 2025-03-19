@@ -42,6 +42,9 @@ def play():
         print("Hi! I'm Bear! Nice to meet you!")
         print("Feed me to keep me happy! Work a job to earn money!")
         print("Use check_status to check my current happiness, hunger, and cleanliness!")
+    else:
+        print("Already playing!")
+        return False
 
 
 

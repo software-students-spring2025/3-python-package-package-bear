@@ -5,6 +5,85 @@ import time
 class Test:
 
     @pytest.fixture
+    #test initialization
+    def test_initialization(self):
+        buildabear.play()
+        assert buildabear.initialized == True, f"Expected buildabear to be initialized"
+    
+    def test_initial_stats(self):
+        buildabear.play()
+        assert buildabear.happiness == 100, f"Expected happiness to be 100"
+        assert buildabear.cleanliness == 100, f"Expected cleanliness to be 100"
+        assert buildabear.hunger == 100, f"Expected hunger to be 100"
+        
+    def test_double_initialization(self):
+        buildabear.play()
+        assert not buildabear.play(), f"Expected initialization after already initialized to return False"
+        
+    #test update happiness
+    def check_time_updated_happiness(self):
+        curr_time = buildabear.lastChecked
+        time.sleep(1)
+        buildabear.update_happiness()
+        assert curr_time != buildabear.lastChecked, f"Update happiness function not updating time"
+    
+    def check_happiness_updated(self):
+        buildabear.happiness = 100
+        buildabear.lastChecked = time.time()
+        time.sleep(100)
+        buildabear.update_happiness()
+        assert buildabear.happiness == 99, f"Expected buildabear happiness to be 99. It was {buildabear.happiness}"
+        
+    def check_happiness_nonnegative(self):
+        buildabear.happiness = 0
+        buildabear.lastChecked = time.time()
+        time.sleep(100)
+        buildabear.update_happiness()
+        assert buildabear.happiness == 0, f"Expected buildabear happiness to be 0. It was {buildabear.happiness}"
+
+        # test update cleanliness
+
+    def check_time_updated_cleanliness(self):
+        curr_time = buildabear.lastChecked
+        time.sleep(1)
+        buildabear.update_cleanliness()
+        assert curr_time != buildabear.lastChecked, f"Update cleanliness function not updating time"
+
+    def check_cleanliness_updated(self):
+        buildabear.cleanliness = 100
+        buildabear.lastChecked = time.time()
+        time.sleep(100)
+        buildabear.update_cleanliness()
+        assert buildabear.cleanliness == 99, f"Expected buildabear cleanliness to be 99. It was {buildabear.cleanliness}"
+
+    def check_cleanliness_nonnegative(self):
+        buildabear.cleanliness = 0
+        buildabear.lastChecked = time.time()
+        time.sleep(100)
+        buildabear.update_cleanliness()
+        assert buildabear.cleanliness == 0, f"Expected buildabear cleanliness to be 0. It was {buildabear.cleanliness}"
+
+        # test update hunger
+
+    def check_time_updated_hunger(self):
+        curr_time = buildabear.lastChecked
+        time.sleep(1)
+        buildabear.update_hunger()
+        assert curr_time != buildabear.lastChecked, f"Update hunger function not updating time"
+
+    def check_hunger_updated(self):
+        buildabear.hunger = 100
+        buildabear.lastChecked = time.time()
+        time.sleep(100)
+        buildabear.update_hunger()
+        assert buildabear.hunger == 99, f"Expected buildabear hunger to be 99. It was {buildabear.hunger}"
+
+    def check_hunger_nonnegative(self):
+        buildabear.hunger = 0
+        buildabear.lastChecked = time.time()
+        time.sleep(100)
+        buildabear.update_hunger()
+        assert buildabear.hunger == 0, f"Expected buildabear hunger to be 0. It was {buildabear.hunger}"
 
     #buy food tests
     def test_buy_food(self):
