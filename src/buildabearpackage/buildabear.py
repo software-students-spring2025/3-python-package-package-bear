@@ -32,6 +32,7 @@ lastChecked = 0
 def play():
     global happiness, hunger, cleanliness, initialized, lastChecked
     if not initialized:
+        print()
         initialized = True
         happiness = 100
         hunger = 100
@@ -218,17 +219,28 @@ def buy_food(amount: int):
 
 
 def feed_bear():
-    global name, hunger
+    global name, hunger, food, happiness
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
     update_status()
     if initialized:
-        print("You gave " + name + " a jar of honey!")
-        print()
-        print("ʕっ•ᴥ•ʔっ🍯")
-        print("Their hunger has gone up by 10 points!")
-        hunger += 10
+        if food > 0:
+            print("You gave " + name + " a jar of honey!")
+            print()
+            print("ʕっ•ᴥ•ʔっ🍯")
+            print("Their hunger has gone up by 10 points!")
+            food -= 1
+            hunger += 10
+        elif food == 0:
+            print("You have no food!")
+            print("This makes " + name + "sad")
+            print()
+            print("ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ")
+            print("Their happiness has decreased by 10.")
+            print("Use the buy food command to get more food!")
+            happiness -= 10
+
 
 def clean_bear():
     global name, cleanliness
@@ -245,7 +257,7 @@ def clean_bear():
         cleanliness += 30
 
 def play_with_bear():
-    global name, cleanliness
+    global name, happiness
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
