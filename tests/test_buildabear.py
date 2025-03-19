@@ -221,7 +221,7 @@ class Test(unittest.TestCase):
         buildabear.lastChecked = time.time()
         for i in range(3):
             buildabear.play_with_bear()
-        assert buildabear.cleanliness == 60, f"Expected happiness variable to be 60. Instead it returned {buildabear.happiness}."
+        assert buildabear.happiness == 60, f"Expected happiness variable to be 60. Instead it returned {buildabear.happiness}."
 
     def test_play_bear_time_passed(self):
         buildabear.happiness = 20
