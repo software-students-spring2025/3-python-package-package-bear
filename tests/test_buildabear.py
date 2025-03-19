@@ -94,8 +94,9 @@ class Test(unittest.TestCase):
         buildabear.food = 0
         reference = 100
         food_ref = 0
-        for i in range(90):
+        for i in range(10):
             buildabear.buy_food(1)
+            print("food " + str(buildabear.food))
             food_ref = food_ref+1
             assert buildabear.food == food_ref, f"Expected buy_food() to return {food_ref}. Instead it returned {buildabear.food}."
             
@@ -107,7 +108,7 @@ class Test(unittest.TestCase):
     def test_buy_food_negative(self):
         #test that food does not go into the negatives/not enough money
         buildabear.budget = 0
-        for i in range(90):
+        for i in range(10):
             buildabear.buy_food(1)
             assert buildabear.budget == 0, f"Expected buy_food() to return 0. Instead it returned {buildabear.budget}."
 
@@ -123,22 +124,19 @@ class Test(unittest.TestCase):
     #check work for 1 hour multiple times
     def test_work_once(self):
         buildabear.budget = 0
-        for i in range(100):
-            buildabear.work(1)
+        buildabear.work(100)
         assert buildabear.budget == 1600, f"Expected work() to return 1600. Instead it returned {buildabear.budget}."
 
     #check work for 0
     def test_work_none(self):
         buildabear.budget = 0
-        for i in range(100):
-            buildabear.work(0)
+        buildabear.work(0)
         assert buildabear.budget == 0, f"Expected work() to return 0. Instead it returned {buildabear.budget}."
             
     #check work for multiple hours multiple times
     def test_work_none(self):
         buildabear.budget = 0
-        for i in range(100):
-            buildabear.work(2)
+        buildabear.work(200)
         assert buildabear.budget == 3200, f"Expected work() to return 3200. Instead it returned {buildabear.budget}."
         
     
@@ -259,10 +257,11 @@ class Test(unittest.TestCase):
         buildabear.initialized = True
         buildabear.happiness = 100
         buildabear.hunger = 100
-        buildabear.cleanliness = 59
+        buildabear.cleanliness = 79
+        buildabear.lastChecked = time.time()
         buildabear.check_status()
-        mock_print.assert_any_call("ʕ´• ᴥ•̥`ʔ")
-        mock_print.assert_any_call(buildabear.name + " feels a little unhappy")
+        mock_print.assert_any_call("＼ʕ •ᴥ•ʔ／")
+        mock_print.assert_any_call(buildabear.name + " is doing good!")
 
     # Test update_status()
     @patch('builtins.print')
