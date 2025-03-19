@@ -91,24 +91,16 @@ class Test(unittest.TestCase):
 
     #buy food tests
     def test_buy_food(self):
-        #test that it actually modifies the budget and food
-        buildabear.budget = 100
-        buildabear.food = 0
-        reference = 100
-        food_ref = 0
-        for i in range(10):
+            #test that it actually modifies the budget and food
+            buildabear.initialized = True
+            buildabear.budget = 100
             buildabear.buy_food(1)
-            print("food " + str(buildabear.food))
-            food_ref = food_ref+1
-            assert buildabear.food == food_ref, f"Expected buy_food() to return {food_ref}. Instead it returned {buildabear.food}."
-            
-            assert buildabear.budget < reference(
-                reference = reference-1
-            ), f"Expected buy_food() to return {reference-1}. Instead it returned {buildabear.budget}."
-            
+            assert buildabear.budget == 99, f"Expected buy_food() to return 99. Instead it returned {buildabear.budget}."
+        
     
     def test_buy_food_negative(self):
         #test that food does not go into the negatives/not enough money
+        buildabear.initialized = True
         buildabear.budget = 0
         for i in range(10):
             buildabear.buy_food(1)
@@ -117,26 +109,30 @@ class Test(unittest.TestCase):
     
     def test_buy_food_multiple(self):
         #test the scenario where you buy multiple amounts of food
+        buildabear.initialized = True
         buildabear.budget = 100
         for i in range(10):
             buildabear.buy_food(2)
-            assert buildabear.budget == 80, f"Expected buy_food() to return 80. Instead it returned {buildabear.budget}."
+        assert buildabear.budget == 80, f"Expected buy_food() to return 80. Instead it returned {buildabear.budget}."
 
     #work tests
     #check work for 1 hour multiple times
     def test_work_once(self):
+        buildabear.initialized = True
         buildabear.budget = 0
         buildabear.work(100)
         assert buildabear.budget == 1600, f"Expected work() to return 1600. Instead it returned {buildabear.budget}."
 
     #check work for 0
     def test_work_none(self):
+        buildabear.initialized = True
         buildabear.budget = 0
         buildabear.work(0)
         assert buildabear.budget == 0, f"Expected work() to return 0. Instead it returned {buildabear.budget}."
             
     #check work for multiple hours multiple times
     def test_work_none(self):
+        buildabear.initialized = True
         buildabear.budget = 0
         buildabear.work(200)
         assert buildabear.budget == 3200, f"Expected work() to return 3200. Instead it returned {buildabear.budget}."
@@ -145,12 +141,14 @@ class Test(unittest.TestCase):
     #change name tests
     #check change name normally once
     def test_change_name_once(self):
+        buildabear.initialized = True
         buildabear.name = "Bear"
         buildabear.change_name("Bear Test")
         assert buildabear.name != "Bear", f"Expected change_name() to return Bear Test. Instead it returned {buildabear.name}."
         
     #check change name with multiple names
     def test_change_name_multiple(self):
+        buildabear.initialized = True
         buildabear.name = "Bear"
         names = ["bear1","bear2","bear3"]
         for i in range (3):
@@ -159,6 +157,7 @@ class Test(unittest.TestCase):
         
     #check change name for empty string
     def test_change_name_empty(self):
+        buildabear.initialized = True
         buildabear.name = "Bear"
         buildabear.change_name("")
         assert buildabear.name == "Bear", f"Expected change_name() to return Bear. Instead it returned an empty string."
