@@ -10,7 +10,8 @@ def main():
     elif "check status" in sys.argv[1:]:
         buildabear.check_status()
     elif "change name" in sys.argv[1:]:
-        buildabear.change_name()
+        temp = input("Enter a new name for your pet!")
+        buildabear.change_name(temp)
     elif "work" in sys.argv[1:]:
         buildabear.work(sys.argv[2])
     elif "feed" in sys.argv[1:]:
