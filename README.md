@@ -1,4 +1,4 @@
-# Python Package Exercise
+# Python Package Exercise: Package Bear 🐻🐻‍❄️🐼
 
 ## Team Members
 Jasmine Fan https://github.com/jasmine7310
@@ -12,10 +12,10 @@ Alex Wang https://github.com/alw9411
 ## Package Description
 Your own command line bear!
 
-## Instructions on How to Configure Our Package
+## How to Configure Package
 - instructions for how to configure and run all parts of your project for any developer on any platform - these instructions must work!
 
-## Instructions for How to Set Up Environment Variables & Importing Starter Data
+## How to Set Up Environment Variables and Import Starter Data
 - instructions for how to set up any environment variables and import any starter data into the database, as necessary, for the system to operate correctly when run.
 
 ## Badge
