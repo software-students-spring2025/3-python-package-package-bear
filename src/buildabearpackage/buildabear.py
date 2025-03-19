@@ -151,7 +151,7 @@ def update_happiness():
         print("Make sure to use play() to set up the bear!")
         return
     if initialized:
-        time_elapsed = time.time() - lastChecked
+        time_elapsed = int(time.time() - lastChecked)
         happiness -= time_elapsed
         happiness = max(happiness, 0)
 
@@ -166,7 +166,7 @@ def update_cleanliness():
         print("Make sure to use play() to set up the bear!")
         return
     if initialized:
-        time_elapsed = time.time() - lastChecked
+        time_elapsed = int(time.time() - lastChecked)
         cleanliness -= time_elapsed
         cleanliness = max(cleanliness, 0)
 
@@ -182,7 +182,7 @@ def update_hunger():
         print("Make sure to use play() to set up the bear!")
         return
     if initialized:
-        time_elapsed = time.time() - lastChecked
+        time_elapsed = int(time.time() - lastChecked)
         hunger -= time_elapsed
         hunger = max(hunger, 0)
 
