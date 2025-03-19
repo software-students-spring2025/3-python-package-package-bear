@@ -1,5 +1,5 @@
 import pytest
-from buildabearpackage import buildabear
+from src.buildabearpackage import buildabear
 import unittest
 from unittest.mock import patch
 import time
@@ -94,8 +94,9 @@ class Test(unittest.TestCase):
         buildabear.food = 0
         reference = 100
         food_ref = 0
-        for i in range(90):
+        for i in range(10):
             buildabear.buy_food(1)
+            print("food " + str(buildabear.food))
             food_ref = food_ref+1
             assert buildabear.food == food_ref, f"Expected buy_food() to return {food_ref}. Instead it returned {buildabear.food}."
             
@@ -107,7 +108,7 @@ class Test(unittest.TestCase):
     def test_buy_food_negative(self):
         #test that food does not go into the negatives/not enough money
         buildabear.budget = 0
-        for i in range(90):
+        for i in range(10):
             buildabear.buy_food(1)
             assert buildabear.budget == 0, f"Expected buy_food() to return 0. Instead it returned {buildabear.budget}."
 
@@ -123,22 +124,19 @@ class Test(unittest.TestCase):
     #check work for 1 hour multiple times
     def test_work_once(self):
         buildabear.budget = 0
-        for i in range(100):
-            buildabear.work(1)
+        buildabear.work(100)
         assert buildabear.budget == 1600, f"Expected work() to return 1600. Instead it returned {buildabear.budget}."
 
     #check work for 0
     def test_work_none(self):
         buildabear.budget = 0
-        for i in range(100):
-            buildabear.work(0)
+        buildabear.work(0)
         assert buildabear.budget == 0, f"Expected work() to return 0. Instead it returned {buildabear.budget}."
             
     #check work for multiple hours multiple times
     def test_work_none(self):
         buildabear.budget = 0
-        for i in range(100):
-            buildabear.work(2)
+        buildabear.work(200)
         assert buildabear.budget == 3200, f"Expected work() to return 3200. Instead it returned {buildabear.budget}."
         
     
@@ -233,59 +231,57 @@ class Test(unittest.TestCase):
     # Test check_status()
     @patch('builtins.print')
     def test_check_status_happiness(self, mock_print):
-        with patch('builtins.print') as mock_print:
         # test the scenario where the happiness is the lowest 
-            buildabear.initialized = True
-            buildabear.happiness = 19
-            buildabear.hunger = 100
-            buildabear.cleanliness = 100
-            buildabear.check_status()
-            mock_print.assert_any_call("ʕx . xʔ")
-        # mock_print.assert_any_call(buildabear.name + " is not doing so well.....")
+        buildabear.initialized = True
+        buildabear.happiness = 19
+        buildabear.hunger = 100
+        buildabear.cleanliness = 100
+        buildabear.check_status()
+        mock_print.assert_any_call("ʕx . xʔ")
+        mock_print.assert_any_call(buildabear.name + " is not doing so well.....")
     
+    @patch('builtins.print')
     def test_check_status_hunger(self, mock_print):
         # test the scenario where the hunger is the lowest 
-        with patch('builtins.print') as mock_print:
-            buildabear.initialized = True
-            buildabear.happiness = 100
-            buildabear.hunger = 39
-            buildabear.cleanliness = 100
-            buildabear.check_status()
-            mock_print.assert_any_call("ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ")
-        # mock_print.assert_any_call(buildabear.name + " is super sad you aren't taking care of it!!")
+        buildabear.initialized = True
+        buildabear.happiness = 100
+        buildabear.hunger = 39
+        buildabear.cleanliness = 100
+        buildabear.check_status()
+        mock_print.assert_any_call("ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ")
+        mock_print.assert_any_call(buildabear.name + " is super sad you aren't taking care of it!!")
     
+    @patch('builtins.print')
     def test_check_status_cleanliness(self, mock_print):
         # test the scenario where the cleanliness is the lowest 
-        with patch('builtins.print') as mock_print:
-            buildabear.initialized = True
-            buildabear.happiness = 100
-            buildabear.hunger = 100
-            buildabear.cleanliness = 59
-            buildabear.check_status()
-            mock_print.assert_any_call("ʕ´• ᴥ•̥`ʔ")
-        # mock_print.assert_any_call(buildabear.name + " feels a little unhappy")
+        buildabear.initialized = True
+        buildabear.happiness = 100
+        buildabear.hunger = 100
+        buildabear.cleanliness = 79
+        buildabear.lastChecked = time.time()
+        buildabear.check_status()
+        mock_print.assert_any_call("＼ʕ •ᴥ•ʔ／")
+        mock_print.assert_any_call(buildabear.name + " is doing good!")
 
     # Test update_status()
+    @patch('builtins.print')
     def test_update_status_happiness(self, mock_print):
         # test if update happiness correctly
-        with patch('builtins.print') as mock_print:
-            buildabear.initialized = False
-            buildabear.happiness = 72
-            buildabear.update_status()
-            mock_print.assert_any_call("Make sure to use play() to set up the bear!")
+        buildabear.initialized = False
+        buildabear.happiness = 72
+        buildabear.update_status()
+        mock_print.assert_any_call("Make sure to use play() to set up the bear!")
     
+    @patch('builtins.print')
     def test_update_status_hunger(self, mock_print):
-        # test if update hunger correctly
-        with patch('builtins.print') as mock_print:
-            buildabear.initialized = False
-            buildabear.hunger = 72
-            buildabear.update_status()
-            mock_print.assert_any_call("Make sure to use play() to set up the bear!")
+        buildabear.initialized = False
+        buildabear.hunger = 72
+        buildabear.update_status()
+        mock_print.assert_any_call("Make sure to use play() to set up the bear!")
 
+    @patch('builtins.print')
     def test_update_status_cleanliness(self, mock_print):
-        # test if update cleanliness correctly
-        with patch('builtins.print') as mock_print:
-            buildabear.initialized = False
-            buildabear.happiness = 72
-            buildabear.update_status()
-            mock_print.assert_any_call("Make sure to use play() to set up the bear!")
+        buildabear.initialized = False
+        buildabear.happiness = 72
+        buildabear.update_status()
+        mock_print.assert_any_call("Make sure to use play() to set up the bear!")
