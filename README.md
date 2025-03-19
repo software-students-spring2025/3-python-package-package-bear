@@ -1,3 +1,5 @@
+![Python build & test](https://github.com/software-students-spring2025/3-python-package-package-bear/tree/main/.github/workflows/build.yaml/badge.svg)
+
 # Python Package Exercise: Package Bear 🐻🐻‍❄️🐼
 
 ## Team Members
