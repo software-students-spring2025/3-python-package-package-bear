@@ -13,12 +13,14 @@ class Test(unittest.TestCase):
         assert buildabear.initialized == True, f"Expected buildabear to be initialized"
     
     def test_initial_stats(self):
+        buildabear.initialized = False
         buildabear.play()
         assert buildabear.happiness == 100, f"Expected happiness to be 100, was {buildabear.happiness}"
         assert buildabear.cleanliness == 100, f"Expected cleanliness to be 100, was {buildabear.cleanliness}"
         assert buildabear.hunger == 100, f"Expected hunger to be 100, was {buildabear.hunger}"
         
     def test_double_initialization(self):
+        buildabear.initialized = False
         buildabear.play()
         assert not buildabear.play(), f"Expected initialization after already initialized to return False"
         
