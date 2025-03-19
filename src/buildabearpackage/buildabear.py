@@ -86,21 +86,21 @@ def check_status():
             print(name +" can now use shadow clone jitsu and its your fault.")
         elif (hunger < 200) or (happiness < 200) or (cleanliness < 200):
             print(" __         __ ")
-            print("/  \.-----./  \\")
-            print("\    -   -    /")
+            print("/  \\.-----./  \\")
+            print("\\    -   -    /")
             print(" |   o   o   | ")
-            print(" \  .-...-.  / ")
-            print("   -\__Y__/-   ")
+            print(" \\  .-...-.  / ")
+            print("   -\\__Y__/-   ")
             print("      ---      ")
             print("You've created the ultimate lifeform. Congratulations 🎉🎉🎉")
 
         print("-----------------------------------------------")
         print("")
 
-        print("🍉 Hunger: " + (hunger/100) + "%")
-        print("🥹 Happiness:: " + (happiness/100) + "%")
-        print("🚿 Cleanliness: " + (cleanliness/100) + "%")
-        print("💵 Balance: $" + (budget))  
+        print("🍉 Hunger: " + str(hunger/100) + "%")
+        print("🥹 Happiness:: " + str(happiness/100) + "%")
+        print("🚿 Cleanliness: " + str(cleanliness/100) + "%")
+        print("💵 Balance: $" + str(budget))  
     else:
         print("Make sure to use play() to set up the bear!")
         return
