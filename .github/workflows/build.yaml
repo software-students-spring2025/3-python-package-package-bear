@@ -21,4 +21,3 @@ jobs:
           pipenv install pytest
           pipenv --venv
           pipenv run python -m pytest
-  
