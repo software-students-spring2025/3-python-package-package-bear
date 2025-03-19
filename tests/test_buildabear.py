@@ -5,6 +5,8 @@ import time
 class Test:
 
     @pytest.fixture
+
+    #buy food tests
     def test_buy_food(self):
         #test that it actually modifies the budget and food
         buildabear.budget = 100
@@ -36,6 +38,50 @@ class Test:
             buildabear.buy_food(2)
             assert buildabear.budget == 80, f"Expected buy_food() to return 80. Instead it returned {buildabear.budget}."
 
+    #work tests
+    #check work for 1 hour multiple times
+    def test_work_once(self):
+        buildabear.budget = 0
+        for i in range(100):
+            buildabear.work(1)
+        assert buildabear.budget == 1600, f"Expected work() to return 1600. Instead it returned {buildabear.budget}."
+
+    #check work for 0
+    def test_work_none(self):
+        buildabear.budget = 0
+        for i in range(100):
+            buildabear.work(0)
+        assert buildabear.budget == 0, f"Expected work() to return 0. Instead it returned {buildabear.budget}."
+            
+    #check work for multiple hours multiple times
+    def test_work_none(self):
+        buildabear.budget = 0
+        for i in range(100):
+            buildabear.work(2)
+        assert buildabear.budget == 3200, f"Expected work() to return 3200. Instead it returned {buildabear.budget}."
+        
+    
+    #change name tests
+    #check change name normally once
+    def test_change_name_once(self):
+        buildabear.name = "Bear"
+        buildabear.change_name("Bear Test")
+        assert buildabear.name != "Bear", f"Expected change_name() to return Bear Test. Instead it returned {buildabear.name}."
+        
+    #check change name with multiple names
+    def test_change_name_multiple(self):
+        buildabear.name = "Bear"
+        names = ["bear1","bear2","bear3"]
+        for i in range (3):
+            buildabear.change_name(names[i])
+            assert buildabear.name == names[i], f"Expected change_name() to return {names[i]}. Instead it returned {buildabear.name}."
+        
+    #check change name for empty string
+    def test_change_name_empty(self):
+        buildabear.name = "Bear"
+        buildabear.change_name("")
+        assert buildabear.name == "Bear", f"Expected change_name() to return Bear. Instead it returned an empty string."
+       
 
     #feed bear tests
     def test_feed_bear_increase(self):
