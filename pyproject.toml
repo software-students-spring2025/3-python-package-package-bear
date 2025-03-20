@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "buildabear_jasmine7310_s-m-wang_TadelinD_alw9411"
 description = "A command line pet that you can feed, clean, and play with!"
-version = "0.1.1"
+version = "0.1.2"
 authors = [
   { name="Jasmine Fan", email="jf4654@nyu.edu" },
   { name="Sophia Wang", email="smw9999@nyu.edu" },
