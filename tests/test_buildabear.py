@@ -1,5 +1,5 @@
 import pytest
-from src.buildabearpackage import buildabear
+from buildabearpackage import buildabear
 import unittest
 from unittest.mock import patch
 import time
