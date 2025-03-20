@@ -13,7 +13,7 @@ def main():
         temp = input("Enter a new name for your pet!")
         buildabear.change_name(temp)
     elif "work" in sys.argv[1:]:
-        buildabear.work(sys.argv[2])
+        buildabear.work(sys.argv[3])
     elif "feed" in sys.argv[1:]:
         buildabear.feed_bear()
     elif "clean" in sys.argv[1:]:
@@ -40,7 +40,7 @@ def main():
     dataScript += "cleanliness:" + str(buildabear.cleanliness) + "\n"
     dataScript += "food:" + str(buildabear.food) + "\n"
     dataScript += "budget:" + str(buildabear.budget) + "\n"
-    dataScript += "name:" + str(buildabear.name) + "\n"
+    dataScript += "name:" + str(buildabear.name) + "\r"
     dataScript += "initialized:" + str(buildabear.initialized) + "\n"
     dataScript += "lastChecked:" + str(buildabear.lastChecked)
     data.write(dataScript)

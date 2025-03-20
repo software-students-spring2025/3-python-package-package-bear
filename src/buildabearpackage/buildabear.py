@@ -3,22 +3,22 @@ import random
 
 data = open('Data.txt', 'r') 
 happyLine = data.readline().split(":")
-happiness = int(happyLine[1])
+happiness = int(happyLine[1].strip())
 
 hungerLine = data.readline().split(":")
-hunger = int(hungerLine[1])
+hunger = int(hungerLine[1].strip())
 
 cleanLine = data.readline().split(":")
-cleanliness = int(cleanLine[1])
+cleanliness = int(cleanLine[1].strip())
 
 foodLine = data.readline().split(":")
-food = int(foodLine[1])
+food = int(foodLine[1].strip())
 
 budgetLine = data.readline().split(":")
-budget = int(budgetLine[1])
+budget = int(budgetLine[1].strip())
 
 nameLine = data.readline().split(":")
-name = nameLine[1]
+name = nameLine[1].strip()
 
 initializedLine = data.readline().split(":")
 if initializedLine[1] == "False":
@@ -27,7 +27,7 @@ else:
     initialized = True
 
 lastCheckedLine = data.readline().split(":")
-lastChecked = int(lastCheckedLine[1])
+lastChecked = round(int(lastCheckedLine[1]))
 
 data.close()
 
@@ -59,7 +59,7 @@ def play():
         happiness = 100
         hunger = 100
         cleanliness = 100
-        lastChecked = time.time()
+        lastChecked = round(time.time())
         print("ʕっ•ᴥ•ʔっ")
         print("Hi! I'm Bear! Nice to meet you!")
         print("Feed me to keep me happy! Work a job to earn money!")
@@ -142,7 +142,7 @@ def update_status():
         update_cleanliness()
         update_happiness()
         update_hunger()
-        lastChecked = time.time()
+        lastChecked = round(time.time())
         return
     else:
         print("Make sure to use play() to set up the bear!")
@@ -178,7 +178,7 @@ def update_happiness():
         print("Make sure to use play() to set up the bear!")
         return
     if initialized:
-        time_elapsed = int(time.time() - lastChecked)
+        time_elapsed = round(int(time.time() - lastChecked))
         happiness -= time_elapsed
         happiness = max(happiness, 0)
         return
@@ -194,7 +194,7 @@ def update_cleanliness():
         print("Make sure to use play() to set up the bear!")
         return
     if initialized:
-        time_elapsed = int(time.time() - lastChecked)
+        time_elapsed = round(int(time.time() - lastChecked))
         cleanliness -= time_elapsed
         cleanliness = max(cleanliness, 0)
         return
@@ -211,7 +211,7 @@ def update_hunger():
         print("Make sure to use play() to set up the bear!")
         return
     if initialized:
-        time_elapsed = int(time.time() - lastChecked)
+        time_elapsed = round(int(time.time() - lastChecked))
         hunger -= time_elapsed
         hunger = max(hunger, 0)
         return

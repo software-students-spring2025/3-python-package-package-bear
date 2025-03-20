@@ -1,0 +1,8 @@
+happiness:0
+hunger:0
+cleanliness:0
+food:0
+budget:100
+name:Bear
+initialized:False
+lastChecked:0
