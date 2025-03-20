@@ -1,13 +1,35 @@
 import time
 import random
-happiness = 0
-hunger = 0
-cleanliness = 0
-food = 0
-budget = 100
-name = "Bear"
-initialized = False
-lastChecked = 0
+
+data = open('input.txt', 'r') 
+happyLine = data.readline().split(":")
+happiness = int(happyLine[1])
+
+hungerLine = data.readline().split(":")
+hunger = int(hungerLine[1])
+
+cleanLine = data.readline().split(":")
+cleanliness = int(cleanLine[1])
+
+foodLine = data.readline().split(":")
+food = int(foodLine[1])
+
+budgetLine = data.readline().split(":")
+budget = int(budgetLine[1])
+
+nameLine = data.readline().split(":")
+name = nameLine[1]
+
+initializedLine = data.readline().split(":")
+if initializedLine[1] == "False":
+    initialized = False
+else:
+    initialized = True
+
+lastCheckedLine = data.readline().split(":")
+lastChecked = int(lastCheckedLine[1])
+
+data.close()
 
 # need variables for timer/ clock
 
