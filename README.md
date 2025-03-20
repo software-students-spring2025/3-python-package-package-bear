@@ -24,7 +24,7 @@ Your own command line bear!
 - a [badge](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge) at the top of the `README.md` file showing the result of the latest build/test workflow run.
 
 ## Link to Our Package Page
-- a link to your package's page on the PyPI website.
+- [Package Link](https://pypi.org/manage/project/buildabear-jasmine7310-s-m-wang-tadelind-alw9411/releases/)
 - how a developer who wants to import your project into their own code can do so - include documentation and code examples for all functions in your package and a link to an example Python program that uses each of them.
 
 ## How to Contribute to Our Project!
