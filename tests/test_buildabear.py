@@ -166,13 +166,13 @@ class Test(unittest.TestCase):
         buildabear.food = 2
         buildabear.hunger = 20
         buildabear.lastChecked = time.time()
-        buildabear.feed_bear()
+        buildabear.feed_bear(1)
         assert buildabear.hunger == 30, f"Expected hunger variable to be 30. Instead it returned {buildabear.hunger}."
     
     def test_feed_bear_food_count(self):
         buildabear.food = 2
         buildabear.lastChecked = time.time()
-        buildabear.feed_bear()
+        buildabear.feed_bear(1)
         assert buildabear.food == 1, f"Expected food variable to be 1. Instead it returned {buildabear.food}."
 
     def test_feed_bear_no_food(self):
@@ -180,7 +180,7 @@ class Test(unittest.TestCase):
         buildabear.hunger = 20
         buildabear.happiness = 30
         buildabear.lastChecked = time.time()
-        buildabear.feed_bear()
+        buildabear.feed_bear(1)
         assert buildabear.food == 0, f"Expected food variable to be 0. Instead it returned {buildabear.food}."
         assert buildabear.hunger == 20, f"Expected hunger variable to be 20. Instead it returned {buildabear.hunger}."
         assert buildabear.happiness == 20, f"Expected happiness variable to be 20. Instead it returned {buildabear.happiness}."

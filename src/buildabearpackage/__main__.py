@@ -15,7 +15,7 @@ def main():
     elif "work" in sys.argv[1:]:
         buildabear.work(sys.argv[2])
     elif "feed" in sys.argv[1:]:
-        buildabear.feed_bear()
+        buildabear.feed_bear(int(sys.argv[2]))
     elif "clean" in sys.argv[1:]:
         buildabear.clean_bear()
     elif "play" in sys.argv[1:]:
