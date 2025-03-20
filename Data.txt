@@ -1,7 +1,8 @@
-happiness:-10
-hunger:92
-cleanliness:145
-food:0
+happiness:100
+hunger:100
+cleanliness:100
+food:10
 budget:1000
-name:Bearinitialized:True
-lastChecked:1742444752
+name:Bear
+initialized:False
+lastChecked:0
