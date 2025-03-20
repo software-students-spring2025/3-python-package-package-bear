@@ -19,6 +19,17 @@ Alex Wang https://github.com/alw9411
 Your own command line bear!
 
 ## Configuration
+Before installing if you don't have pipenv:
+
+```
+pip3 install pipenv
+```
+
+Then Activate pipenv:
+```
+pipenv shell
+```
+
 On a new python project run:
 ```
 pip install buildabear-jasmine7310-s-m-wang-TadelinD-alw9411
@@ -45,7 +56,20 @@ python -m buildabearpackage play
 python -m buildabearpackage "buy food" X  # X being an integer number!!
 ```
 ## Set Up Environment Variables and Starter Data
-Package automatically makes a text file. No need for any manual setup.
+To use the package you are going to need to create a file called Data.txt in the same directory in which you will use the package. 
+
+In this txt file you will need to copy and paste the following:
+```
+happiness:100
+hunger:100
+cleanliness:100
+food:10
+budget:1000
+name:Bear
+initialized:False
+lastChecked:0
+```
+Make sure that there is no new line after inputting this information.
 
 ## Link to Our Package Page
 [Package Bear: buildabear](https://pypi.org/project/buildabear-jasmine7310-s-m-wang-TadelinD-alw9411/)
