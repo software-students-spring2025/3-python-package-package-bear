@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "buildabear_jasmine7310_s-m-wang_TadelinD_alw9411"
 description = "A command line pet that you can feed, clean, and play with!"
-version = "0.0.7"
+version = "0.0.8"
 authors = [
   { name="Jasmine Fan", email="jf4654@nyu.edu" },
   { name="Sophia Wang", email="smw9999@nyu.edu" },
@@ -24,6 +24,9 @@ license = {file = "LICENSE"}
 
 [project.optional-dependencies]
 dev = ["pytest"]
+
+[tool.flit.sdist]
+include = ["Data.txt"]
 
 [project.urls]
 Homepage = "https://github.com/software-students-spring2025/3-python-package-package-bear"
