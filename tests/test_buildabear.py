@@ -1,12 +1,10 @@
 import pytest
-from buildabearpackage import buildabear
+from src.buildabearpackage import buildabear
 import unittest
 from unittest.mock import patch
 import time
 
 class Test(unittest.TestCase):
-
-
     #test initialization
     def test_initialization(self):
         buildabear.play()
