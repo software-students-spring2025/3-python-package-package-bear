@@ -120,9 +120,9 @@ def check_status():
         print("-----------------------------------------------")
         print("")
 
-        print("🍉 Hunger: " + str(hunger/100) + "%")
-        print("🥹 Happiness:: " + str(happiness/100) + "%")
-        print("🚿 Cleanliness: " + str(cleanliness/100) + "%")
+        print("🍉 Hunger: " + str(hunger) + "%")
+        print("🥹  Happiness: " + str(happiness) + "%")
+        print("🚿 Cleanliness: " + str(cleanliness) + "%")
         print("💵 Balance: $" + str(budget))  
         return
     else:
