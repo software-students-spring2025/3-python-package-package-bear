@@ -7,7 +7,7 @@ def main():
     # DELETE PASS WHEN WORKING ON CODE!!!!
     if "start" in sys.argv[1:]:
         buildabear.play()
-    elif "check status" in sys.argv[1:]:
+    elif "status" in sys.argv[1:]:
         buildabear.check_status()
     elif "change name" in sys.argv[1:]:
         temp = input("Enter a new name for your pet!")
@@ -21,10 +21,18 @@ def main():
     elif "play" in sys.argv[1:]:
         buildabear.play_with_bear()
     elif "buy food" in sys.argv[1:]:
-        buildabear.buy_food(sys.argv[3])
+        buildabear.buy_food(sys.argv[2])
     else:
         print("Welcome to Package Bear! Your very own command line pet!")
         print("Try using 'start' to create your bear!")
+        print("Then use the commands below to interact with your pet:")
+        print("\t status- check the status of your pet")
+        print('\t "change name"- to change the name of your pet')
+        print('\t work X- (X being an integer number) to work a number of X hours and earn money to buy food')
+        print('\t feed- to feed your pet')
+        print('\t clean- to clean your pet')
+        print('\t play- to play with your pet')
+        print('\t "buy food" X- (X being an integer number) to buy an X amount of food for your pet')
 
     return
     
