@@ -3,5 +3,6 @@ hunger:100
 cleanliness:100
 food:10
 budget:1000
-name:Bearinitialized:False
+name:Bear
+initialized:False
 lastChecked:0
