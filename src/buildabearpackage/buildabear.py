@@ -1,7 +1,7 @@
 import time
 import random
 
-data = open('input.txt', 'r') 
+data = open('Data.txt', 'r') 
 happyLine = data.readline().split(":")
 happiness = int(happyLine[1])
 

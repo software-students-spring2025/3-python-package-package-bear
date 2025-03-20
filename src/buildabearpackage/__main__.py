@@ -34,7 +34,7 @@ def main():
         print('\t play- to play with your pet')
         print('\t "buy food" X- (X being an integer number) to buy an X amount of food for your pet')
 
-    data = open("demofile3.txt", "w")
+    data = open("Data.txt", "w")
     dataScript = "happiness:" + str(buildabear.happiness) + "\n"
     dataScript += "hunger:" + str(buildabear.hunger) + "\n"
     dataScript += "cleanliness:" + str(buildabear.cleanliness) + "\n"
