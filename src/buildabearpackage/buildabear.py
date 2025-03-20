@@ -257,22 +257,24 @@ def buy_food(amount: int):
         return
 
 
-def feed_bear():
+def feed_bear(amount : int):
     global name, hunger, food, happiness
     if not initialized:
         print("Make sure to use play() to set up the bear!")
         return
     update_status()
     if initialized:
-        if food > 0:
-            print("You gave " + name + " a jar of honey!")
+        if amount == 0:
+            print("Please enter an amount more than 0.")
+        elif food >= amount:
+            print("You gave " + name + " " + str(amount) +" jar(s) of honey!")
             print()
             print("ʕっ•ᴥ•ʔっ🍯")
-            print("Their hunger has gone up by 10 points!")
-            food -= 1
-            hunger += 10
-        elif food == 0:
-            print("You have no food!")
+            print("Their hunger has gone up by "+ str(10 * amount)+" points!")
+            food -= amount
+            hunger += (10 * amount)
+        elif food < amount:
+            print("You don't have enough food!")
             print("This makes " + name + "sad")
             print()
             print("ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ")
