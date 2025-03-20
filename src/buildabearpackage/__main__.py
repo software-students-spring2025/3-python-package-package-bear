@@ -25,6 +25,8 @@ def main():
     else:
         print("Welcome to Package Bear! Your very own command line pet!")
         print("Try using 'start' to create your bear!")
+
+    return
     
 
 
