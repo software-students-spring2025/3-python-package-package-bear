@@ -5,8 +5,6 @@ from unittest.mock import patch
 import time
 
 class Test(unittest.TestCase):
-
-
     #test initialization
     def test_initialization(self):
         buildabear.play()
