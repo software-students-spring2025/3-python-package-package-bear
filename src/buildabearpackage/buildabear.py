@@ -21,7 +21,7 @@ nameLine = data.readline().split(":")
 name = nameLine[1].strip()
 
 initializedLine = data.readline().split(":")
-if initializedLine[1] == "False":
+if initializedLine[1] == "False\n":
     initialized = False
 else:
     initialized = True
