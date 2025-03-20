@@ -22,7 +22,7 @@ Your own command line bear!
 Before installing if you don't have pipenv:
 
 ```
-pip3 install pipenv
+pip install pipenv
 ```
 
 Then Activate pipenv:
