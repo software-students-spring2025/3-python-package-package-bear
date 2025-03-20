@@ -1,4 +1,4 @@
-import buildabear as buildabear
+import buildabearpackage.buildabear as buildabear
 import sys
 
 def main():
