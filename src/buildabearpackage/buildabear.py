@@ -42,6 +42,7 @@ def play():
         print("Hi! I'm Bear! Nice to meet you!")
         print("Feed me to keep me happy! Work a job to earn money!")
         print("Use check_status to check my current happiness, hunger, and cleanliness!")
+        return
     else:
         print("Already playing!")
         return False
@@ -101,6 +102,7 @@ def check_status():
         print("🥹 Happiness:: " + str(happiness/100) + "%")
         print("🚿 Cleanliness: " + str(cleanliness/100) + "%")
         print("💵 Balance: $" + str(budget))  
+        return
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -119,6 +121,7 @@ def update_status():
         update_happiness()
         update_hunger()
         lastChecked = time.time()
+        return
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -136,6 +139,8 @@ def change_name(temp):
             print("You must enter a name.")
         else:
             name = temp
+
+        return
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -154,6 +159,7 @@ def update_happiness():
         time_elapsed = int(time.time() - lastChecked)
         happiness -= time_elapsed
         happiness = max(happiness, 0)
+        return
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the cleanliness
@@ -169,6 +175,7 @@ def update_cleanliness():
         time_elapsed = int(time.time() - lastChecked)
         cleanliness -= time_elapsed
         cleanliness = max(cleanliness, 0)
+        return
 
 # ******** Tadelin
 # This function uses the timer/ clock to periodically update the hunger
@@ -185,6 +192,7 @@ def update_hunger():
         time_elapsed = int(time.time() - lastChecked)
         hunger -= time_elapsed
         hunger = max(hunger, 0)
+        return
 
 
 # ******** Sophia
@@ -199,6 +207,7 @@ def work(hours: int):
     if initialized:
         budget = budget + (hours*16)
         print(name+" worked for "+str(hours)+" hours. You earned "+str(hours*16)+" coin.")
+        return
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -219,6 +228,8 @@ def buy_food(amount: int):
             food = food+amount
             budget = budget - (amount*cost)
             print("You bought "+str(amount)+" for "+str(amount*cost)+" coin")
+            
+        return
     else:
         print("Make sure to use play() to set up the bear!")
         return
@@ -246,6 +257,8 @@ def feed_bear():
             print("Their happiness has decreased by 10.")
             print("Use the buy food command to get more food!")
             happiness -= 10
+        
+        return
 
 
 def clean_bear():
@@ -261,6 +274,7 @@ def clean_bear():
         print("They are feeling so clean!")
         print("Their cleanliness has gone up by 30 points!")
         cleanliness += 30
+        return
 
 def play_with_bear():
     global name, happiness
@@ -299,6 +313,8 @@ def play_with_bear():
             print("They made you a bouquet!")
             print("Their happiness has gone up by 20 points!")
             happiness += 20
+        
+        return
 
 
 
