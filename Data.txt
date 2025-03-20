@@ -1,8 +1,8 @@
-happiness:20
-hunger:0
-cleanliness:0
-food:9
+happiness:100
+hunger:100
+cleanliness:100
+food:10
 budget:1000
-name:THE DESTROYER
+name:Bear
 initialized:True
-lastChecked:17
+lastChecked:0

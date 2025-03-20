@@ -227,7 +227,7 @@ def update_hunger():
 def work(hours: int):
     global budget, initialized, name
     if initialized:
-        budget = budget + (hours*16)
+        budget = int(budget) + (hours*16)
         print(name+" worked for "+str(hours)+" hours. You earned "+str(hours*16)+" coin.")
         return
     else:
@@ -248,7 +248,7 @@ def buy_food(amount: int):
             print("You don't have enough money!")
         else:
             food = food+amount
-            budget = budget - (amount*cost)
+            budget = int(budget) - (amount*cost)
             print("You bought "+str(amount)+" for "+str(amount*cost)+" coin")
             
         return
