@@ -227,8 +227,8 @@ def update_hunger():
 def work(hours: int):
     global budget, initialized, name
     if initialized:
-        budget = int(budget) + int(hours*16)
-        print(name+" worked for "+str(hours)+" hours. You earned "+str(hours*16)+" coin.")
+        budget = budget + (int(hours)*16)
+        print(name+" worked for "+str(hours)+" hours. You earned "+str(int(hours)*16)+" coin.")
         return
     else:
         print("Make sure to use play() to set up the bear!")
@@ -244,12 +244,12 @@ def buy_food(amount: int):
     if initialized:
         #for now, food costs $1
         cost = 1
-        if (int(amount*cost) > int(budget)):
+        if (int(amount)*cost > budget):
             print("You don't have enough money!")
         else:
-            food = food+amount
-            budget = int(budget) - int(amount*cost)
-            print("You bought "+str(amount)+" for "+str(amount*cost)+" coin")
+            food = food+int(amount)
+            budget = int(budget) - int(amount)*cost
+            print("You bought "+str(amount)+" for "+str(int(amount)*cost)+" coin")
             
         return
     else:
