@@ -82,17 +82,17 @@ Now that we have food, let's feed our bear!
 
 ## Feed your bear
 
-Your bears stats will go down by the second so it is important to feed your bear. In the command line type:
+Your bears stats will go down by the second so it is important to feed your bear. In the command line type the feed command followed by how much food you would like to feed your bear:
 
 ```
-python -m buildabearpackage feed
+python -m buildabearpackage feed 3
 ```
 
 And you will get:
 
 ![image](images/feed.png)
 
-Now they are less hungry! 
+Now their hunger stat will go up by 10 times the amount of food you feed them. Now they are less hungry! 
 
 ## Clean your bear
 
